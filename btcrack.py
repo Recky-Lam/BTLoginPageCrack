@@ -33,32 +33,21 @@ def tryBT(urlPrefix, enrty):
 	    return 1
 
 
+if __name__ == "__main__":
+
 # ip:port
-urlPrefix = '127.0.0.1:8888'
+	urlPrefix = '127.0.0.1:8888'
 
-i = 1
+	i = 1
 
-while (i < 36*36*36*36*36*36*36*36) :
-	convertStr = str(convert(i)).lower()
-	result = tryBT(urlPrefix, convertStr)
+	while (i < 36*36*36*36*36*36*36*36) :
+		convertStr = str(convert(i)).lower()
+		result = tryBT(urlPrefix, convertStr)
 
-	while result != 0:
-		url = 'http://' + urlPrefix + '/' + convertStr
-		print('BT Entry Found: ' + url)
-		exit()
+		while result != 0:
+			url = 'http://' + urlPrefix + '/' + convertStr
+			print('BT Entry Found: ' + url)
+			exit()
 
-	i+=1
-
-
-
-
-
-
-
-
-
-
-
-
-
+		i+=1
 
