@@ -2,6 +2,7 @@ import sys
 import os
 import time
 import requests
+import multiprocessing
 
 def convert(num):
 
@@ -32,11 +33,18 @@ def tryBT(urlPrefix, enrty):
 
 	    return 1
 
+def do(n):				# 参数n由args=(1,)传入
+	name = multiprocessing.current_process().name		# 获取当前进程的名字
+	print(name, 'starting')
+	print("worker ", n)
+	return
+
 
 if __name__ == "__main__":
 
+
 # ip:port
-	urlPrefix = '127.0.0.1:8888'
+	urlPrefix = '65.0.187.255:8888'
 
 	i = 1
 
@@ -44,10 +52,16 @@ if __name__ == "__main__":
 		convertStr = str(convert(i)).lower()
 		result = tryBT(urlPrefix, convertStr)
 
-		while result != 0:
-			url = 'http://' + urlPrefix + '/' + convertStr
-			print('BT Entry Found: ' + url)
-			exit()
+		p = multiprocessing.Process(target=tryBT, args=(urlPrefix,convertStr,))	# (i,)中加入","表示元祖
+		# numList.append(p)
+		p.start()
+
+		# while result != 0:
+		# 	url = 'http://' + urlPrefix + '/' + convertStr
+		# 	print('BT Entry Found: ' + url)
+		# 	exit()
 
 		i+=1
+
+
 

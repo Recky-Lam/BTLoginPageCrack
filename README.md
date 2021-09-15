@@ -19,4 +19,5 @@ And wait...
 
 ### Issues Need to Solve
 
-##### 1.Need Mutiple Processing
+##### 1.Mutiple Processing
+##### 2.Generate account and password file first
